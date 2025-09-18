@@ -7,10 +7,16 @@ export default function AddStudent() {
   const router = useRouter()
 
   const handleSubmit = async (data) => {
+    const formData = new FormData()
+    formData.append('firstName', data.firstName)
+    formData.append('lastName', data.lastName)
+    formData.append('email', data.email)
+    formData.append('age', data.age)
+    if (data.profilePicture) formData.append('profilePicture', data.profilePicture)
+
     await fetch('http://localhost:5000/students', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+      body: formData,
     })
     router.push('/students')
   }
