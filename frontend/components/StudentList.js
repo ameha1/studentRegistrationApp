@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import {
   Table,
@@ -36,9 +37,24 @@ export default function StudentList({ students, onDelete }) {
             <TableCell>{student.age}</TableCell>
             <TableCell>
               {student.profilePicture ? (
-                <img src={student.profilePicture} alt="Profile" className="w-10 h-10" />
+                <Image
+                  src={`http://localhost:5000/uploads/${student.profilePicture}`}
+                  alt={`${student.firstName}'s profile`}
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                  onError={(e) => {
+                    e.target.src = '/placeholder.jpg' // Fallback
+                  }}
+                />
               ) : (
-                'N/A'
+                <Image
+                  src="/placeholder.jpg"
+                  alt="No profile picture"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
               )}
             </TableCell>
             <TableCell>

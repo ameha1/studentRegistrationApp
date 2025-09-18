@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import StudentForm from '@/components/StudentForm'
+import StudentForm from '../../../../components/StudentForm'
 
 export default function EditStudent() {
   const [student, setStudent] = useState(null)
@@ -17,10 +17,16 @@ export default function EditStudent() {
   }, [params.id])
 
   const handleSubmit = async (data) => {
+    const formData = new FormData()
+    formData.append('firstName', data.firstName)
+    formData.append('lastName', data.lastName)
+    formData.append('email', data.email)
+    formData.append('age', data.age)
+    if (data.profilePicture) formData.append('profilePicture', data.profilePicture)
+
     await fetch(`http://localhost:5000/students/${params.id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+      body: formData,
     })
     router.push('/students')
   }
