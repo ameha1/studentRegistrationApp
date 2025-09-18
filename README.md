@@ -75,22 +75,22 @@ Setup Instructions
 
 1. Clone the Repository
 
-git clone <repository-url>
-cd student-crud-app
+   git clone <repository-url>
+   cd student-crud-app
 
 2. Setup Backend
    
-Navigate to backend/:
-
-cd backend
-
-Install dependencies:
-
-npm install
-
-Create uploads/ folder for images:
-mkdir uploads
-chmod 755 uploads
+   Navigate to backend/:
+   
+   cd backend
+   
+   Install dependencies:
+   
+   npm install
+   
+   Create uploads/ folder for images:
+   mkdir uploads
+   chmod 755 uploads
 
 
 Configure PostgreSQL:
@@ -103,8 +103,8 @@ Start PostgreSQL (brew services start postgresql on macOS or equivalent).
 
 Run Prisma migrations:
 
-npx prisma generate
-npx prisma migrate dev --name init
+   npx prisma generate
+   npx prisma migrate dev --name init
 
 Start backend:
 
@@ -113,33 +113,29 @@ Start backend:
 
 3. Setup Frontend
 
-Navigate to frontend/:
+   Navigate to frontend/:
+   
+   cd ../frontend
+   
+   Install dependencies:
+   
+   npm install
+   
+   Initialize shadcn/ui:
+   
+   npx shadcn@latest init
+   
+   Accept defaults or configure as needed.
+   
+   Install shadcn/ui components:
+   
+   npx shadcn@latest add button input label form table
 
-cd ../frontend
+Start frontend:
 
-Install dependencies:
-
-npm install
-
-Initialize shadcn/ui:
-
-npx shadcn@latest init
-
-Accept defaults or configure as needed.
-
-Install shadcn/ui components:
-
-npx shadcn@latest add button input label form table
-
-Add a placeholder image:
-
-Place a placeholder.jpg in frontend/public/ (e.g., download a generic avatar or use curl -o public/placeholder.jpg https://via.placeholder.com/40).
-
-- Start frontend:
-
-npm run dev
-
-App runs on http://localhost:3000. (Note: Avoid next dev --turbopack if compatibility issues arise with shadcn/ui.)
+   npm run dev
+   
+   App runs on http://localhost:3000.
 
 4. Verify Setup
 
